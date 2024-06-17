@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  jmusicbot:
+    container_name: jmusicbot
+    image: jmusicbot:latest
+    restart: always
+
+    volumes:
+      - ./run:/app/data
+
+    environment:
+      CONFIG_FORCE_token: FILL_ME
+      CONFIG_FORCE_owner: 0

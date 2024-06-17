@@ -69,7 +69,13 @@ public class BotConfig
             
             // load in the config file, plus the default values
             //Config config = ConfigFactory.parseFile(path.toFile()).withFallback(ConfigFactory.load());
-            Config config = ConfigFactory.load();
+            Config config;
+
+            if ("false".equalsIgnoreCase(System.getProperty("jmusicbot.persistent_config", "true"))) {
+                config = ConfigFactory.defaultOverrides().withFallback(ConfigFactory.load());
+            } else {
+                config = ConfigFactory.load();
+            }
             
             // set values
             token = config.getString("token");
